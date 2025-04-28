@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable - Room Allotment System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="dropdown">
+            <a href="#" class="menu-icon"><i class="fas fa-bars"></i></a>
+            <div class="dropdown-content">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="timetable-final-updated.html"><i class="fas fa-calendar-alt"></i> Timetable</a>
+                <a href="class-stats.html"><i class="fas fa-chart-bar"></i> Statistics</a>
+            </div>
+        </div>
+        
+        <div class="logo">
+            <i class="fas fa-door-open"></i>
+            <span>Room Allotment System</span>
+        </div>
+        
+        <div class="nav-icons">
+            <a href="profile.html"><i class="fas fa-user"></i></a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="timetable-header">
+            <h1>Class Timetable</h1>
+            <div class="view-controls">
+                <select id="day-select" class="day-select" aria-label="Select day to view timetable">
+                    <option value="">All Days</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                </select>
+                <button id="view-toggle" class="view-toggle-btn">Show Week View</button>
+            </div>
+        </div>
+        
+        <!-- Timetable content will be loaded by JavaScript -->
+        <div id="timetable-content"></div>
+    </div>
+
+    <script src="js/timetable-updated.js"></script>
+</body>
+</html>

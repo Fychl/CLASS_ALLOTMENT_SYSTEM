@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Room Allotment System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../room_allotment_system/css/styles.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <i class="fas fa-door-open"></i>
+                <h1>Room Allotment System</h1>
+                <h2>Create Account</h2>
+            </div>
+            
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="teacher">Teacher</button>
+                <button class="tab-btn" data-tab="student">Student</button>
+            </div>
+            
+            <div class="tab-content" id="teacher-register">
+                <form id="teacherRegisterForm">
+                    <div class="form-group">
+                        <label for="teacherName">Full Name</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="teacherName" placeholder="Enter your full name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacherEmail">Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="teacherEmail" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacherId">Teacher ID</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-id-card"></i>
+                            <input type="text" id="teacherId" placeholder="Enter your teacher ID" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacherDepartment">Department</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-building"></i>
+                            <input type="text" id="teacherDepartment" placeholder="Enter your department" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacherSubjects">Subjects (max 3)</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-book"></i>
+                            <input type="text" id="teacherSubjects" placeholder="Enter up to 3 subjects separated by commas" required>
+                        </div>
+                        <small>Enter up to 3 subjects separated by commas</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacherContact">Contact Number</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" id="teacherContact" placeholder="Enter 10-digit phone number" required
+                                   pattern="[0-9]{10}" title="Please enter a 10-digit phone number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacherPassword">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="teacherPassword" placeholder="Create a password" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacherConfirmPassword">Confirm Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="teacherConfirmPassword" placeholder="Confirm your password" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="auth-btn">Register</button>
+                </form>
+            </div>
+
+            <div class="tab-content" id="student-register" style="display:none">
+                <form id="studentRegisterForm">
+                    <div class="form-group">
+                        <label for="studentName">Full Name</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="studentName" placeholder="Enter your full name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentEmail">Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="studentEmail" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentId">Student ID</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-id-card"></i>
+                            <input type="text" id="studentId" placeholder="Enter your student ID" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentCourse">Course</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                            <input type="text" id="studentCourse" placeholder="Enter your course" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentPassword">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="studentPassword" placeholder="Create a password" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentConfirmPassword">Confirm Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="studentConfirmPassword" placeholder="Confirm your password" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="auth-btn">Register</button>
+                </form>
+            </div>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="login.html">Login here</a></p>
+                <a href="../room_allotment_system/index.html">Guest Login</a>
+            </div>
+</div>
+    </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const teacherForm = document.getElementById('teacherRegisterForm');
+    const studentForm = document.getElementById('studentRegisterForm');
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const teacherTab = document.getElementById('teacher-register');
+    const studentTab = document.getElementById('student-register');
+
+    // Tab switching logic
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            if (button.dataset.tab === 'teacher') {
+                teacherTab.style.display = 'block';
+                studentTab.style.display = 'none';
+            } else {
+                teacherTab.style.display = 'none';
+                studentTab.style.display = 'block';
+            }
+        });
+    });
+
+    // Teacher form submission
+    teacherForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const fullName = document.getElementById('teacherName').value.trim();
+        const email = document.getElementById('teacherEmail').value.trim();
+        const teacherId = document.getElementById('teacherId').value.trim();
+        const department = document.getElementById('teacherDepartment').value.trim();
+        const contactNumber = document.getElementById('teacherContact').value.trim();
+        const password = document.getElementById('teacherPassword').value;
+        const confirmPassword = document.getElementById('teacherConfirmPassword').value;
+        const subjectsInput = document.getElementById('teacherSubjects').value.trim();
+        const selectedSubjects = subjectsInput ? subjectsInput.split(',').map(s => s.trim()).filter(s => s.length > 0) : [];
+
+        if (password !== confirmPassword) {
+            alert('Passwords do not match.');
+            return;
+        }
+
+        if (selectedSubjects.length === 0 || selectedSubjects.length > 3) {
+            alert('Please enter between 1 and 3 subjects separated by commas.');
+            return;
+        }
+
+        const payload = { fullName, email, teacherId, department, contactNumber, password, courses: selectedSubjects };
+
+        try {
+            const response = await fetch('http://localhost:5000/register/teacher', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert('Teacher registered successfully!');
+                // Store teacherId in localStorage for profile fetching
+                localStorage.setItem('teacherId', teacherId);
+                // Redirect to teacher dashboard
+                window.location.href = '../teacher/index.html';
+            } else {
+                alert(result.message || 'Failed to register teacher.');
+            }
+        } catch (error) {
+            alert('Error: ' + error.message);
+        }
+    });
+
+    // Student form submission
+    studentForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const fullName = document.getElementById('studentName').value.trim();
+        const email = document.getElementById('studentEmail').value.trim();
+        const studentId = document.getElementById('studentId').value.trim();
+        const course = document.getElementById('studentCourse').value.trim();
+        const password = document.getElementById('studentPassword').value;
+        const confirmPassword = document.getElementById('studentConfirmPassword').value;
+
+        if (password !== confirmPassword) {
+            alert('Passwords do not match.');
+            return;
+        }
+
+        const payload = { fullName, email, studentId, course, password };
+
+        try {
+            const response = await fetch('http://localhost:5000/register/student', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert('Student registered successfully!');
+                studentForm.reset();
+            } else {
+                alert(result.message || 'Failed to register student.');
+            }
+        } catch (error) {
+            alert('Error: ' + error.message);
+        }
+    });
+});
+</script>

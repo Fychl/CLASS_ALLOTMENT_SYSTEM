@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Generated Timetable - Student Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../room_allotment_system/css/styles.css" />
+    <link rel="stylesheet" href="css/timetable-generator.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="logo">
+            <i class="fas fa-user-graduate"></i>
+            <span>Student Portal</span>
+        </div>
+        <div class="menu-icon" id="menuIcon">
+            <i class="fas fa-bars"><h4>Menu</h4></i>
+        </div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="generated-timetable.html"><i class="fas fa-calendar-alt"></i> Timetable</a>
+            <a href="class-stats.html"><i class="fas fa-chart-bar"></i> Statics</a>
+            <a href="course-meterial-student.html"><i class="fas fa-user"></i> Notes </a>
+            <a href="report.html"><i class="fas fa-file-alt"></i> Reports</a>
+            <div class="profile-logo-container">
+                <div class="profile-logo" id="profileLogo" style="position: relative;">
+                    <img src="images/student-avatar.png" alt="Student Profile" id="profileImage" />
+                    <input type="file" id="uploadImageInput" accept="image/*" style="display:none" />
+                </div>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <div class="profile-header" style="position: relative;">
+                        <img src="images/student-avatar.png" class="profile-avatar" alt="Student Avatar" id="profileAvatar" />
+                        <button id="uploadImageBtn" title="Upload Profile Image" style="position: relative; top: 25px; right: 30px; background:#3498db; color:white; border:none; border-radius:50%; width:24px; height:24px; font-size:18px; line-height:24px; text-align:center; cursor:pointer; box-shadow: 0 0 5px rgba(0,0,0,0.3);">+</button>
+                        <h3>Student Profile</h3>
+                    </div>
+                    <div class="profile-info">
+                        <p><strong>Name:</strong> Jane Smith</p>
+                        <p><strong>Email:</strong> jane.smith@student.edu</p>
+                        <p><strong>Department:</strong> Computer Science</p>
+                        <p><strong>Courses:</strong> CS101, CS201</p>
+                    </div>
+                    <a href="../login/login.html" class="view-profile-btn" style="background:#e74c3c;">Logout</a>
+                </div>
+                <button id="profileButton" type="button" >Profile</button>
+            </div>
+        </div>
+    </div>
+        
+    <h1>Generated Timetable</h1>
+    <div class="timetable-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Period </th>
+                    <th>Period </th>
+                    <th>Period </th>
+                    <th>Period </th>
+                    <th>Period </th>
+                    <th>Period </th>
+                    <th>Period </th>
+                    <th>Period </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Monday</td>
+                    <td colspan="8">No timetable generated yet.</td>
+                </tr>
+                <tr>
+                    <td>Tuesday</td>
+                    <td colspan="8">No timetable generated yet.</td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td colspan="8">No timetable generated yet.</td>
+                </tr>
+                <tr>
+                    <td>Thursday</td>
+                    <td colspan="8">No timetable generated yet.</td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td colspan="8">No timetable generated yet.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<script src="js/index.js"></script>
+</body>
+</html>

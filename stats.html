@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Statistics - Room Allotment System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+ <!-- Navigation Bar -->
+ <div class="navbar">
+    <div class="logo">
+    <i class="fas fa-chalkboard-teacher"></i>
+    <span>Teacher Portal</span>
+    </div>
+
+    <div class="nav-links">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="timetable-final-updated.html"><i class="fas fa-calendar-alt"></i> Timetable</a>
+    <a href="report.html"><i class="fas fa-chart-bar"></i> Reports</a>
+    <div class="profile-logo-container" style="display: flex;">
+        <div class="profile-logo" id="profileLogo" style="position: relative;">
+        <img
+            src="teacher-avatar.png"
+            alt="Teacher Profile"
+            id="profileImage"
+        />
+        <input type="file" id="uploadImageInput" accept="image/*" style="display: none" />
+        </div>
+        <div class="profile-dropdown" id="profileDropdown">
+        <div class="profile-header" style="position: relative;">
+            <img
+            src="teacher-avatar.png"
+            class="profile-avatar"
+            alt="Teacher Avatar"
+            id="profileAvatar"/>
+            <button
+            id="uploadImageBtn"
+            title="Upload Profile Image"> + </button>
+            <div class="profile-container">
+                <div class="profile-item">
+                    <span class="profile-label">Name:</span>
+                    <span class="profile-value" id="profileName"></span>
+                </div>
+                <div class="profile-item">
+                    <span class="profile-label">Teacher ID:</span>
+                    <span class="profile-value" id="profileNumber"></span>
+                </div>
+                <div class="profile-item">
+                    <span class="profile-label">Email:</span>
+                    <span class="profile-value" id="profileEmail"></span>
+                </div>
+                <div class="profile-item">
+                    <span class="profile-label">Department:</span>
+                    <span class="profile-value" id="profileDepartment"></span>
+                </div>
+                <div class="profile-item">
+                    <span class="profile-label">Subjects:</span>
+                    <span class="profile-value" id="profileSubject"></span>
+                </div>
+            </div>
+        <a href="../login/login.html" class="view-profile-btn" style="background: #e74c3c;">Logout</a>
+        </div>
+    </div>
+    <button id="profileButton" type="button">Profile</button>
+    </div>
+   </div>
+</div>  
+    <script src="js/navbar.js"></script>
+</body>
+</html>

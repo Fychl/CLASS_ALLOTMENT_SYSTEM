@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Room Allotment System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../room_allotment_system/css/styles.css">
+
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <i class="fas fa-door-open"></i>
+                <h1>Room Allotment System</h1>
+                <h2>Login</h2>
+            </div>
+            
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="teacher">Teacher</button>
+                <button class="tab-btn" data-tab="student">Student</button>
+            </div>
+
+            <div id="loginError" style="color: red; text-align: center; margin: 10px 0; display: none;"></div>
+            
+            <div class="tab-content" id="teacher-login">
+                <form id="teacherLoginForm">
+                    <div class="form-group">
+                        <label for="teacherId">Teacher ID</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-id-card"></i>
+                            <input type="text" id="teacherId" placeholder="Enter your teacher ID" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacherPassword">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="teacherPassword" placeholder="Enter your password" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="auth-btn">Login</button>
+                </form>
+            </div>
+
+            <div class="tab-content" id="student-login" style="display:none">
+                <form id="studentLoginForm">
+                    <div class="form-group">
+                        <label for="studentEmail">Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="studentEmail" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentPassword">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="studentPassword" placeholder="Enter your password" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="auth-btn">Login</button>
+                </form>
+            </div>
+
+            <div class="auth-footer">
+                <p>Don't have an account? <a href="register.html">Register here</a></p>
+                <p><a href="forgot-password.html">Forgot Password?</a></p>
+            </div>
+        </div>
+    </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const teacherTab = document.getElementById('teacher-login');
+    const studentTab = document.getElementById('student-login');
+    const loginError = document.getElementById('loginError');
+
+    // Tab switching logic
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            if (button.dataset.tab === 'teacher') {
+                teacherTab.style.display = 'block';
+                studentTab.style.display = 'none';
+            } else {
+                teacherTab.style.display = 'none';
+                studentTab.style.display = 'block';
+            }
+            loginError.style.display = 'none';
+            loginError.textContent = '';
+        });
+    });
+
+    // Teacher login form submission
+    const teacherLoginForm = document.getElementById('teacherLoginForm');
+
+    // Update localStorage teacherId on input change
+    const teacherIdInput = document.getElementById('teacherId');
+    teacherIdInput.addEventListener('input', () => {
+        localStorage.setItem('teacherId', teacherIdInput.value.trim());
+    });
+
+    teacherLoginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        loginError.style.display = 'none';
+        loginError.textContent = '';
+
+        const teacherId = document.getElementById('teacherId').value.trim();
+        const password = document.getElementById('teacherPassword').value;
+
+        if (!teacherId || !password) {
+            loginError.textContent = 'Please enter both Teacher ID and password.';
+            loginError.style.display = 'block';
+            return;
+        }
+
+        try {
+            const response = await fetch('http://localhost:5000/login/teacher', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ teacherId, password })
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                // Store teacherId in localStorage for profile fetching
+                localStorage.setItem('teacherId', teacherId);
+                // Redirect after successful login
+                window.location.href = '../teacher/index.html';
+            } else {
+                loginError.textContent = result.message || 'Login failed.';
+                loginError.style.display = 'block';
+            }
+        } catch (error) {
+            loginError.textContent = 'Error: ' + error.message;
+            loginError.style.display = 'block';
+        }
+    });
+
+    // Student login form submission
+    const studentLoginForm = document.getElementById('studentLoginForm');
+    studentLoginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        loginError.style.display = 'none';
+        loginError.textContent = '';
+
+        const studentEmail = document.getElementById('studentEmail').value.trim();
+        const password = document.getElementById('studentPassword').value;
+
+        if (!studentEmail || !password) {
+            loginError.textContent = 'Please enter both Email and password.';
+            loginError.style.display = 'block';
+            return;
+        }
+
+        try {
+            const response = await fetch('http://localhost:5000/login/student', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: studentEmail, password })
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                // Redirect after successful login
+                window.location.href = '../room_allotment_system/index.html';
+            } else {
+                loginError.textContent = result.message || 'Login failed.';
+                loginError.style.display = 'block';
+            }
+        } catch (error) {
+            loginError.textContent = 'Error: ' + error.message;
+            loginError.style.display = 'block';
+        }
+    });
+});
+</script>
+</body>
+</html>
